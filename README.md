@@ -1,7 +1,7 @@
 # OData on .NET - one endpoint, any query
 
-- OData endpoint over the music database
-- UI that shows query and SQL it becomes
+- OData endpoint over the music database.
+- UI that shows query and SQL it becomes.
 
 <img src="images/for-github.png" alt="Test screenshot" width="838" />
 
@@ -64,8 +64,6 @@ Naming is **convention-based**: `ArtistsController` matches the entity set `Arti
 ## What this project skips
 
 API is read-only. Writes, `$batch`, delta tracking, custom functions and `$search` are left out.
-
-They are real OData features, just too heavy for showing all at once.
 
 ## Build & run
 
