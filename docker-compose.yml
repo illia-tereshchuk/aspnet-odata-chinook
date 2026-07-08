@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:16
+    container_name: chinook-db
+    environment:
+      POSTGRES_USER: chinook
+      POSTGRES_PASSWORD: chinook
+      # The Chinook script creates its own "chinook" database via CREATE DATABASE,
+      # so we let the default "postgres" db exist and just run the script on init.
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      # Everything in this folder runs automatically the first time the
+      # container starts with an empty data volume.
+
+      # this is "bind mount"
+      - ./AspNetOdataChinook/SqlScripts/chinook.sql:/docker-entrypoint-initdb.d/01-chinook.sql:ro
+
+      
+      - chinook-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U chinook -d chinook"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  chinook-data:

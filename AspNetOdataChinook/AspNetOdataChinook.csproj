@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OData" Version="9.4.1" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The Chinook dump lives here only so docker-compose can mount it; it is
+         not part of the app, so keep it out of the build output. Removing it
+         from Content leaves it as a plain None item (visible, never copied). -->
+    <Content Remove="SqlScripts\chinook.sql" />
+  </ItemGroup>
+
+</Project>

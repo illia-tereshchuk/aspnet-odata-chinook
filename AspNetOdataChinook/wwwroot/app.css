@@ -1,0 +1,38 @@
+body { min-height: 100vh; }
+
+#query, #query2 { resize: vertical; }
+
+/* Highlight the OData system query options inside the generated URL. */
+#results table { font-size: .9rem; }
+#results th { white-space: nowrap; }
+
+#tabs .nav-link { cursor: pointer; }
+
+.chip-check { user-select: none; }
+
+pre#jsonView { max-height: 60vh; overflow: auto; }
+
+/* OData → SQL pipeline panel */
+.pipeline-step {
+  font-size: .8rem;
+  color: var(--bs-secondary-color);
+  margin-bottom: .25rem;
+}
+.pipeline-step:not(:first-child) { margin-top: .75rem; }
+
+.explain-box {
+  background: var(--bs-tertiary-bg);
+  border: 1px solid var(--bs-border-color);
+  border-radius: .375rem;
+  padding: .6rem .75rem;
+  margin: 0;
+  font-size: .8rem;
+  max-height: 16rem;
+  overflow: auto;
+}
+.explain-box:empty::before {
+  content: "— run a query —";
+  color: var(--bs-secondary-color);
+}
+/* SQL keeps its own line breaks and scrolls horizontally if needed. */
+.explain-sql { white-space: pre; }
