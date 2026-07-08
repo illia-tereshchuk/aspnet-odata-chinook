@@ -37,18 +37,15 @@ Done — data loaded.
 
 browser → `5080` → app → `5432` → postgres
 
-## EF Core mapping — by hand
+## EF Core mapping by hand
 
 The DB uses `snake_case`, C# wants `PascalCase`.
-The mapping is written by hand with **Fluent API** in `OnModelCreating`.
-
-Why not scaffold? Scaffolding would generate all 11 tables with noisy names.
-Hand mapping keeps only the 8 entities we need.
+The mapping is written in `OnModelCreating`.
 
 ## OData and DI
 
-- The EDM model is registered as a **singleton** — in OData route and `/explain`.
-- `ChinookContext` is registered per request; controllers get both via DI.
+- The EDM model is registered as a **singleton** — in OData route and `/explain`
+- `ChinookContext` is registered per request; controllers get both via DI
 
 Naming is **convention-based**: `ArtistsController` matches the entity set `Artists`.
 
@@ -66,7 +63,9 @@ Naming is **convention-based**: `ArtistsController` matches the entity set `Arti
 
 ## What this project skips
 
-The API is read-only, so writes, `$batch`, delta tracking, custom functions and `$search` are left out — they are real OData features, just too heavy for showing all at once.
+API is read-only. Writes, `$batch`, delta tracking, custom functions and `$search` are left out.
+
+They are real OData features, just too heavy for showing all at once.
 
 ## Build & run
 
